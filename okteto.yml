@@ -1,8 +1,8 @@
 name: killswitch
 image: node:alpine
+autocreate: true
 sync:
   - .:/north/killswitch/opt
 command: apk update && apk add libtool autoconf automake g++ gcc git make && apk add --no-cache bash && git init && yarn && yarn build && yarn dlx pm2 start .
 forward:
-- 9229:9229
-- 3000:3000
+- 8080:8080

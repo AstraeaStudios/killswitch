@@ -1,9 +1,9 @@
 FROM node:alpine
 WORKDIR /opt/killswitch
 
-ENV PORT=80
+ENV PORT=8080
 
-EXPOSE 80
+EXPOSE 8080
 
 COPY . .
 RUN yarn
