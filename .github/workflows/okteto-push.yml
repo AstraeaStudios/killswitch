@@ -1,0 +1,31 @@
+name: Continuous Delivery
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Login
+        uses: okteto/login@master
+        with:
+          token: ${{ secrets.OKTETO_TOKEN }}
+      - name: Namespace
+        uses: okteto/namespace@master
+        with:
+          namespace: artiefuzzz
+      - name: Push
+        uses: okteto/push@master
+        with:
+          namespace: north-artiefuzzz
+          name: north
+
