@@ -1,17 +1,12 @@
 FROM node:alpine
 WORKDIR /opt/killswitch
 
-ARG PORT
-ARG REDIRECT
+ENV PORT=80
 
-ENV PORT=${PORT}
-ENV REDIRECT=${REDIRECT}
-
-
-EXPOSE ${PORT}
+EXPOSE 80
 
 COPY . .
-RUN npm i
-RUN npm run build
+RUN yarn
+RUN yarn build
 
-ENTRYPOINT [ "npm", "run", "start" ]
+ENTRYPOINT [ "node", "." ]
