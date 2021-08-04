@@ -1,4 +1,3 @@
-// @ts-nocheck
 import express, { Request, Response } from 'express'
 import path from 'path'
 import fs from 'fs'
@@ -10,7 +9,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // ! Censor the API Key if it's provided
-app.use((req: Request, res: Response, next: unknown) => {
+app.use((req: Request, res: Response, next) => {
 	let querykey
 	let bodykey
 	if (req.path === '/log') return next()
@@ -41,7 +40,8 @@ app.get('/', async (_req: Request, res: Response) => {
 
 // ! Route Imports
 fs.readdir(path.join(__dirname, 'routes'), (_err, files) => {
-	let r: unknown[] = []
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	let r: any[] = []
 	files.forEach(file => {
 		if (file.endsWith('ts')) return
 		let pathstring = path.join(__dirname, 'routes', file)

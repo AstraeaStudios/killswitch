@@ -1,4 +1,3 @@
-// @ts-expect-error
 import { Request, Response } from 'express'
 import Logger from '../utils/logger'
 import request from '../utils/request'
