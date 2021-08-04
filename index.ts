@@ -1,11 +1,11 @@
 // @ts-nocheck
-import Express, { Request, Response } from 'express'
+import express, { Request, Response } from 'express'
 import path from 'path'
 import fs from 'fs'
 import Logger from './utils/logger'
 import constants from './constants'
 
-const app = new Express()
+const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
